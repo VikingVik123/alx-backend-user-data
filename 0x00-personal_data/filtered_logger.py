@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+"""
+logging funcs + class + MYSQL funcs
+"""
 from typing import List
 import re
 import logging
