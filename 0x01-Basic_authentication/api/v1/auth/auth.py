@@ -3,7 +3,7 @@
 Authentication module
 """
 import re
-from flask import requests
+from flask import request
 from typing import List, Union, TypeVar
 
 
