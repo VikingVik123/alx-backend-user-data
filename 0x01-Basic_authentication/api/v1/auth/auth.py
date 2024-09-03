@@ -2,11 +2,15 @@
 """
 Authentication module
 """
+import re
 from flask import requests
 from typing import List, Union, TypeVar
 
 
 class Auth:
+    """
+    Authentication class.
+    """
 
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """
