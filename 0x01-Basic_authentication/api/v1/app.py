@@ -58,14 +58,10 @@ def before_request_handler():
 
     if not auth.require_auth(request.path, excluded_paths):
         return
-    if auth.require_auth(request.path, excluded_paths):
-            auth_header = auth.authorization_header(request)
-            user = auth.current_user(request)
-            if auth_header is None:
-                abort(401)
-            if user is None:
-                abort(403)
-
+    if auth.authorization_header(request) is None:
+        abort(401)
+    if auth.current_user(request) is None:
+        abort(403)
 
 
 if __name__ == "__main__":
