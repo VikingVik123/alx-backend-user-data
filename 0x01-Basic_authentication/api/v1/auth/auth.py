@@ -38,13 +38,10 @@ class Auth:
         """
         checks for authorization
         """
-        if request is None:
-            return None
-        auth_header = request.headers.get('Authorization')
-        if auth_header is None:
-            return None
-
-        return auth_header
+        key = 'Authorization'
+        if request is None or key not in request.headers:
+            return
+        return request.headers.get(key)
 
     def current_user(self, request=None) -> TypeVar('User'):
         """
