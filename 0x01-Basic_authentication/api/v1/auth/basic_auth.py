@@ -15,4 +15,4 @@ class BasicAuth(Auth):
     """
     creates BasicAuth class
     """
-    
+    pass
