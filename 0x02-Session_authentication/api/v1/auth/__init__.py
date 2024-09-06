@@ -1,1 +1,1 @@
-@app_views.route('/auth_session/login/', methods=['POST'], strict_slashes=False)
+from api.v1.views.session_auth import *
