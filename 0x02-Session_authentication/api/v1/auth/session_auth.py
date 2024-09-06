@@ -7,6 +7,7 @@ import base64
 import binascii
 from typing import Tuple, TypeVar, Optional
 from uuid import uuid4
+import os
 
 from .auth import Auth
 from models.user import User
@@ -44,3 +45,11 @@ class SessionAuth(Auth):
         user_id = self.user_id_by_session_id.get(session_id)
         return user_id
 
+    def session_cookie(self, request=None) -> Optional[str]:
+        """
+        method 2 return session cookie
+        """
+        if request is None:
+            return None
+        session_cookie = os.getenv("SESSION_NAME", "session_id")
+        return request.session_cookie.get(session_cookie)
