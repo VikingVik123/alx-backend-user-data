@@ -51,5 +51,5 @@ class SessionAuth(Auth):
         """
         if request is None:
             return None
-        session_cookie = os.getenv("SESSION_NAME", "session_id")
-        return request.session_cookie.get(session_cookie)
+        session_name = os.getenv('SESSION_NAME', '_my_session_id')
+        return request.cookies.get(session_name)
