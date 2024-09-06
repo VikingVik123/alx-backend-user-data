@@ -1,1 +1,1 @@
-from api.v1.views.session_auth import *
+from api.v1.views.auth.session_auth import *
