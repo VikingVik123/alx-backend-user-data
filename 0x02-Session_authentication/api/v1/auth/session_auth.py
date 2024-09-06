@@ -53,3 +53,15 @@ class SessionAuth(Auth):
             return None
         session_name = os.getenv('SESSION_NAME', '_my_session_id')
         return request.cookies.get(session_name)
+    
+    def current_user(self, request=None) -> Optional[User]:
+        """
+        Retrieve a User instance based on the session cookie.
+        """
+        session_id = self.session_cookie(request)
+        if session_id is None:
+            return None
+        user_id = self.user_id_for_session_id(session_id)
+        if user_id is None:
+            return None
+        return User.get(user_id)
