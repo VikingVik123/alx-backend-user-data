@@ -39,7 +39,6 @@ class DB:
         self._session.add(user)
         self._session.commit()
         self._session.refresh(user)
-        new_user = None
         
-        return new_user
+        return user
         
