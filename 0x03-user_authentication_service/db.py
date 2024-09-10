@@ -61,7 +61,7 @@ class DB:
         """
         update the user info
         """
-        user = self.find_user_by(user)
+        user = self.find_user_by()
         for value in kwargs.items:
             if not hasattr(user, value):
                 raise ValueError(f"{value} is not an attribute of the User class.")
