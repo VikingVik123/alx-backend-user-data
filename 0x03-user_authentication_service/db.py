@@ -61,9 +61,10 @@ class DB:
         """
         update the user info
         """
-        user = self.find_user_by(id=user_id)
+        user = self.find_user_by(user=user_id)
         for value in kwargs.items:
             if not hasattr(user, value):
                 raise ValueError(f"{value} is not an attribute of the User class.")
             setattr(user, value)
         self._session.commit()
+        return user
