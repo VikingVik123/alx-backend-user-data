@@ -50,7 +50,7 @@ class DB:
         Finds a user by arbitrary keyword arguments
         """
         try:
-            user = self._session.query(User).filterby(**kwargs).one()
+            user = self._session.query(User).filter_by(**kwargs).one()
             return user
         except NoResultFound:
             raise NoResultFound
