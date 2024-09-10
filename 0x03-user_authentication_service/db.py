@@ -67,4 +67,4 @@ class DB:
                 raise ValueError(f"{value} is not an attribute of the User class.")
             setattr(user, value)
         self._session.commit()
-        return user
+
