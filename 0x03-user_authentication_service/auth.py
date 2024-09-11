@@ -5,6 +5,7 @@ method that takes in a password string arguments and returns bytes
 import bcrypt
 from db import DB
 from user import User
+from sqlalchemy.orm.exc import NoResultFound
 
 
 def _hash_password(password: str) -> str:
@@ -27,11 +28,12 @@ class Auth:
         """
         method to register new users
         """
-        existing_email = self._db.find_user_by(email=email)
-        if email == existing_email:
+        try:
+            # Try to find a user with the specified email
+            existing_user = self._db.find_user_by(email=email)
             raise ValueError(f"User {email} already exists")
-
-        else:
+        except NoResultFound:
+            # If no user exists, create a new user
             pwd = _hash_password(password)
             new_user = self._db.add_user(email, pwd)
             return new_user
