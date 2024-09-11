@@ -33,7 +33,7 @@ class DB:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
         return self.__session
-    
+
     def add_user(self, email: str, hashed_password: str) -> User:
         """
         method to add user from User class
@@ -42,9 +42,9 @@ class DB:
         self._session.add(user)
         self._session.commit()
         self._session.refresh(user)
-        
+
         return user
-    
+
     def find_user_by(self, **kwargs) -> User:
         """
         Finds a user by arbitrary keyword arguments
@@ -56,7 +56,7 @@ class DB:
             raise NoResultFound
         except InvalidRequestError:
             raise InvalidRequestError
-        
+
     def update_user(self, user_id: int, **kwargs) -> None:
         """
         update the user info
@@ -64,7 +64,6 @@ class DB:
         user = self.find_user_by(id=user_id)
         for key, value in kwargs.items():
             if not hasattr(user, value):
-                raise ValueError(f"{value} is not an attribute of the User class.")
+                raise ValueError(f"{value} attribute of the User class.")
             setattr(user, value)
         self._session.commit()
-
