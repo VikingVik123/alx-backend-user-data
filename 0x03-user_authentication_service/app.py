@@ -8,8 +8,8 @@ from flask import jsonify
 
 app = Flask(__name__)
 
-@app.route("/", methods=['GET'])
 
+@app.route("/", methods=['GET'])
 def task():
     """
     A simple GET route that returns a JSON message
