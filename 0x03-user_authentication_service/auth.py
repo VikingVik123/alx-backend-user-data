@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3
 """
 method that takes in a password string arguments and returns bytes
 """
