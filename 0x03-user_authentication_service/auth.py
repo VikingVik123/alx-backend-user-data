@@ -50,7 +50,7 @@ class Auth:
         method 2 check 4 valid login credentials
         """
         try:
-            user_creds = self._db.find_user_by()
+            user_creds = self._db.find_user_by(email=email)
             if bcrypt.checkpw(password.encode('utf-8'),
                               user_creds.hashed_password.encode('utf-8')):
                 return True
