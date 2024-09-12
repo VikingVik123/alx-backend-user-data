@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 method that takes in a password string arguments and returns bytes
 """
@@ -16,6 +16,14 @@ def _hash_password(password: str) -> str:
     hashed_encoded = password.encode('utf-8')
     hashed = bcrypt.hashpw(hashed_encoded, bcrypt.gensalt())
     return hashed.decode('utf-8')
+
+
+def _generate_uuid(self) -> str:
+    """
+    generate unique id 4 users
+    """
+    id = uuid4()
+    return str(id)
 
 
 class Auth:
@@ -50,10 +58,3 @@ class Auth:
                 return False
         except NoResultFound:
             return False
-
-    def _generate_uuid(self) -> str:
-        """
-        generate unique id 4 users
-        """
-        id = uuid4()
-        return str(id)
