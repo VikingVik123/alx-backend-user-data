@@ -1,4 +1,4 @@
-
+#!/usr/bin/env python3
 """
 method that takes in a password string arguments and returns bytes
 """
@@ -65,3 +65,5 @@ class Auth:
         user = self._db.find_user_by(email=email)
         session_id = _generate_uuid()
         return session_id
+
+print(_generate_uuid())
