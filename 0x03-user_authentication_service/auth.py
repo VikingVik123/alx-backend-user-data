@@ -22,8 +22,7 @@ def _generate_uuid(self) -> str:
     """
     generate unique id 4 users
     """
-    id = uuid4()
-    return str(id)
+    return str(uuid4())
 
 
 class Auth:
