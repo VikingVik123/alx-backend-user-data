@@ -18,7 +18,7 @@ def _hash_password(password: str) -> str:
     return hashed.decode('utf-8')
 
 
-def _generate_uuid(self) -> str:
+def _generate_uuid() -> str:
     """
     generate unique id 4 users
     """
