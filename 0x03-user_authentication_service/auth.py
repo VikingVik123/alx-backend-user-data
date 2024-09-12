@@ -18,6 +18,14 @@ def _hash_password(password: str) -> str:
     return hashed.decode('utf-8')
 
 
+def _generate_uuid(self) -> str:
+    """
+    generate unique id 4 users
+    """
+    id = uuid4()
+    return str(id)
+
+
 class Auth:
     """Auth class to interact with the authentication database.
     """
@@ -42,7 +50,7 @@ class Auth:
         method 2 check 4 valid login credentials
         """
         try:
-            user_creds = self._db.find_user_by()
+            user_creds = self._db.find_user_by(email=email)
             if bcrypt.checkpw(password.encode('utf-8'),
                               user_creds.hashed_password.encode('utf-8')):
                 return True
@@ -50,10 +58,3 @@ class Auth:
                 return False
         except NoResultFound:
             return False
-
-    def _generate_uuid(self) -> str:
-        """
-        generate unique id 4 users
-        """
-        id = uuid4()
-        return str(id)
